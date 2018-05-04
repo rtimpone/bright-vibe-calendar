@@ -14,9 +14,17 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         collectionView.dataSource = self
+        collectionView.delegate = self
         adjustCollectionViewSpacing()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     func adjustCollectionViewSpacing() {
@@ -35,6 +43,21 @@ extension CalendarViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "dayCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(ofType: DayCell.self, for: indexPath)
+        let dayNumber = indexPath.row % 31 + 1
+        cell.dayLabel.text = "\(dayNumber)"
+        return cell
+    }
+}
+
+extension CalendarViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let contentWidth = collectionView.contentSize.width
+        let itemsPerRow: CGFloat = 7
+        let itemWidth = contentWidth / itemsPerRow
+        let itemHeight = itemWidth
+        return CGSize(width: itemWidth, height: itemHeight)
     }
 }
