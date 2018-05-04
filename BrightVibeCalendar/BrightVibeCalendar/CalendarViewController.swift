@@ -13,12 +13,18 @@ class CalendarViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var dataSource = CollectionViewDataSource()
+    var collectionViewDelegate = CollectionViewDelegate()
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        collectionViewDelegate.delegate = self
+        
+        collectionView.dataSource = dataSource
+        collectionView.delegate = collectionViewDelegate
         adjustCollectionViewSpacing()
     }
     
@@ -36,7 +42,28 @@ class CalendarViewController: UIViewController {
     }
 }
 
-extension CalendarViewController: UICollectionViewDataSource {
+extension CalendarViewController: CollectionViewDelegateDelegate {
+    
+    func didSelectItem(at indexPath: IndexPath) {
+        dataSource.selectItem(at: indexPath)
+        collectionView.reloadData()
+    }
+}
+
+class CollectionViewDataSource: NSObject {
+    
+    private var selectedItem: Int = 1
+    
+    func selectItem(at indexPath: IndexPath) {
+        selectedItem = item(for: indexPath)
+    }
+    
+    func item(for indexPath: IndexPath) -> Int {
+        return indexPath.row % 31 + 1
+    }
+}
+
+extension CollectionViewDataSource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 200
@@ -44,13 +71,25 @@ extension CalendarViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(ofType: DayCell.self, for: indexPath)
-        let dayNumber = indexPath.row % 31 + 1
+        let dayNumber = item(for: indexPath)
         cell.dayLabel.text = "\(dayNumber)"
+        let cellState: DayCell.CellState = dayNumber == selectedItem ? .selected : .unselected
+        cell.updateForState(cellState)
         return cell
     }
 }
 
-extension CalendarViewController: UICollectionViewDelegateFlowLayout {
+protocol CollectionViewDelegateDelegate: class {
+    func didSelectItem(at indexPath: IndexPath)
+}
+
+class CollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    weak var delegate: CollectionViewDelegateDelegate?
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectItem(at: indexPath)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

@@ -22,14 +22,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWR-jm-RBk">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-mB-5aa" customClass="CircleView" customModule="BrightVibeCalendar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.9882352941176471" green="0.22352941176470587" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <viewLayoutGuide key="safeArea" id="5OO-Bl-C2M"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fz-L5-eqk">
                                 <rect key="frame" x="16" y="15" width="18" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.23137254901960785" green="0.35686274509803922" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.36078431372549019" green="0.42352941176470588" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2fz-L5-eqk" firstAttribute="centerX" secondItem="dWR-jm-RBk" secondAttribute="centerX" id="JKF-gP-Fbx"/>
                             <constraint firstItem="2fz-L5-eqk" firstAttribute="centerY" secondItem="dWR-jm-RBk" secondAttribute="centerY" id="xDy-M3-qX0"/>
@@ -38,13 +43,18 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="0LC-s7-62B" firstAttribute="leading" secondItem="aaT-mB-5aa" secondAttribute="leading" id="1QW-JZ-9mh"/>
                 <constraint firstItem="0LC-s7-62B" firstAttribute="top" secondItem="dWR-jm-RBk" secondAttribute="top" id="2pl-5T-hfR"/>
                 <constraint firstItem="dWR-jm-RBk" firstAttribute="bottom" secondItem="0LC-s7-62B" secondAttribute="bottom" id="6vh-9E-Be3"/>
+                <constraint firstItem="aaT-mB-5aa" firstAttribute="bottom" secondItem="0LC-s7-62B" secondAttribute="bottom" id="EJK-vB-79p"/>
                 <constraint firstItem="dWR-jm-RBk" firstAttribute="trailing" secondItem="0LC-s7-62B" secondAttribute="trailing" id="QGZ-pc-VPP"/>
                 <constraint firstItem="0LC-s7-62B" firstAttribute="leading" secondItem="dWR-jm-RBk" secondAttribute="leading" id="UhW-KG-WAb"/>
+                <constraint firstItem="aaT-mB-5aa" firstAttribute="trailing" secondItem="0LC-s7-62B" secondAttribute="trailing" id="ZdU-w7-Gqk"/>
+                <constraint firstItem="0LC-s7-62B" firstAttribute="top" secondItem="aaT-mB-5aa" secondAttribute="top" id="yph-ao-w0E"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="0LC-s7-62B"/>
             <connections>
+                <outlet property="circleView" destination="aaT-mB-5aa" id="UXi-Rl-dhX"/>
                 <outlet property="dayLabel" destination="2fz-L5-eqk" id="NCL-2L-ZGD"/>
             </connections>
             <point key="canvasLocation" x="-221" y="-39"/>
