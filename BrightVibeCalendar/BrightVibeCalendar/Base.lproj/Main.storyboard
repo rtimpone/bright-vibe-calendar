@@ -70,6 +70,7 @@
                             <constraint firstAttribute="bottom" secondItem="6ZT-9R-WvA" secondAttribute="bottom" id="h8r-nA-YPZ"/>
                             <constraint firstItem="6ZT-9R-WvA" firstAttribute="top" secondItem="MOi-Nd-9vp" secondAttribute="top" id="kdV-Qm-0hK"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="k3T-uk-Ok8"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="6ZT-9R-WvA" id="VwD-ma-C62"/>
