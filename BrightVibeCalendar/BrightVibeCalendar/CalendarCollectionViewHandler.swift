@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 protocol CalendarCollectionViewHandlerDelegate: class {
-    
     func didSelectItem(_ item: Int)
 }
 

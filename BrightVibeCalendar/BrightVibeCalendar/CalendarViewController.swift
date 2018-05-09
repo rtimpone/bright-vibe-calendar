@@ -11,7 +11,6 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     
-    
     @IBOutlet weak var headerCollectionView: UICollectionView!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     

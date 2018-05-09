@@ -29,7 +29,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.062745098039215685" green="0.10980392156862745" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yLu-oi-n80" secondAttribute="trailing" id="AhV-Cc-OrB"/>
                             <constraint firstItem="yLu-oi-n80" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BmR-1d-WcC"/>
