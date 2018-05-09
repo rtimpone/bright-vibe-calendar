@@ -42,9 +42,9 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(ofType: DayCell.self, for: indexPath)
-        let dayNumber = item(for: indexPath)
-        cell.dayLabel.text = "\(dayNumber)"
-        let cellState: DayCell.CellState = dayNumber == selectedItem ? .selected : .unselected
+        let day = item(for: indexPath)
+        cell.updateForDay(day)
+        let cellState: DayCell.CellState = day == selectedItem ? .selected : .unselected
         cell.updateForState(cellState)
         return cell
     }

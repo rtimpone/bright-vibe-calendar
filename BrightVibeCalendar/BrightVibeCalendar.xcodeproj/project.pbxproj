@@ -77,24 +77,64 @@
 			isa = PBXGroup;
 			children = (
 				FB378568209CDC71007EC68C /* AppDelegate.swift */,
-				FB37857A209CE101007EC68C /* CalendarViewController.swift */,
-				FB3ECDA920A0C459007154AB /* CalendarCollectionViewHandler.swift */,
-				FB3ECDA520A0C43D007154AB /* CollectionViewHandler.swift */,
-				FBF8151020A284E6000F586F /* CollectionViewSpacer.swift */,
-				FB378586209CF917007EC68C /* CircleView.swift */,
-				FB37857C209CE157007EC68C /* ContainerViewController.swift */,
+				FB378574209CDC72007EC68C /* Info.plist */,
+				FBF8151720A28DD4000F586F /* Collection View Helpers */,
+				FBF8151620A28DC5000F586F /* Cells */,
+				FBF8151A20A28E0E000F586F /* Protocols */,
+				FBF8151820A28DF6000F586F /* UI */,
+				FBF8151920A28E04000F586F /* View Controllers */,
+			);
+			path = BrightVibeCalendar;
+			sourceTree = "<group>";
+		};
+		FBF8151620A28DC5000F586F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				FB37857E209CEB41007EC68C /* DayCell.swift */,
 				FB378580209CEB48007EC68C /* DayCell.xib */,
 				FBF8151220A2899E000F586F /* HeaderCell.swift */,
 				FBF8151420A289C8000F586F /* HeaderCell.xib */,
-				FBF8150E20A28386000F586F /* HeaderCollectionViewHandler.swift */,
-				FB3ECDAB20A0C47B007154AB /* NibBased.swift */,
-				FB37856C209CDC71007EC68C /* Main.storyboard */,
-				FB37856F209CDC72007EC68C /* Assets.xcassets */,
-				FB378571209CDC72007EC68C /* LaunchScreen.storyboard */,
-				FB378574209CDC72007EC68C /* Info.plist */,
 			);
-			path = BrightVibeCalendar;
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FBF8151720A28DD4000F586F /* Collection View Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FB3ECDA520A0C43D007154AB /* CollectionViewHandler.swift */,
+				FB3ECDA920A0C459007154AB /* CalendarCollectionViewHandler.swift */,
+				FBF8150E20A28386000F586F /* HeaderCollectionViewHandler.swift */,
+				FBF8151020A284E6000F586F /* CollectionViewSpacer.swift */,
+			);
+			path = "Collection View Helpers";
+			sourceTree = "<group>";
+		};
+		FBF8151820A28DF6000F586F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FB37856F209CDC72007EC68C /* Assets.xcassets */,
+				FB378586209CF917007EC68C /* CircleView.swift */,
+				FB378571209CDC72007EC68C /* LaunchScreen.storyboard */,
+				FB37856C209CDC71007EC68C /* Main.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		FBF8151920A28E04000F586F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FB37857A209CE101007EC68C /* CalendarViewController.swift */,
+				FB37857C209CE157007EC68C /* ContainerViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FBF8151A20A28E0E000F586F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FB3ECDAB20A0C47B007154AB /* NibBased.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
