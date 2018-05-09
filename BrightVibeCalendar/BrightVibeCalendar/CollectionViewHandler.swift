@@ -11,9 +11,10 @@ import UIKit
 
 class CollectionViewHandler: NSObject {
     
+    weak var collectionView: UICollectionView!
     var registeredNibNames = Set<String>()
     
-    func dequeueReusableCell<CellType: NibBased>(ofType type: CellType.Type, from collectionView: UICollectionView, for indexPath: IndexPath) -> CellType {
+    func dequeueReusableCell<CellType: NibBased>(ofType type: CellType.Type, for indexPath: IndexPath) -> CellType {
         
         let nibName = CellType.nibName
         
@@ -30,5 +31,9 @@ class CollectionViewHandler: NSObject {
         }
         
         return castedCell
+    }
+    
+    func updateCollectionViewLayout() {
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 }
