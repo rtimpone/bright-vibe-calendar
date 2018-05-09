@@ -28,9 +28,8 @@ extension HeaderCollectionViewHandler: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(ofType: DayCell.self, for: indexPath)
+        let cell = dequeueReusableCell(ofType: HeaderCell.self, for: indexPath)
         cell.dayLabel.text = days[indexPath.row]
-        cell.updateForState(.unselected)
         return cell
     }
 }
