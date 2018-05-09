@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yLu-oi-n80">
-                                <rect key="frame" x="0.0" y="44" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="475"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="yLu-oi-n80" secondAttribute="height" multiplier="1:1" id="rAT-aH-Eht"/>
+                                    <constraint firstAttribute="height" constant="475" id="Z14-b7-kXr"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="T2J-xb-Y2I" kind="embed" id="Lpy-I4-fe8"/>
@@ -48,11 +47,25 @@
             <objects>
                 <viewController id="T2J-xb-Y2I" customClass="CalendarViewController" customModule="BrightVibeCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MOi-Nd-9vp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6ZT-9R-WvA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jWz-eB-Sl3" userLabel="Header Collection View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="8JI-qV-UAW"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dpc-0Q-ZlJ">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6ZT-9R-WvA" userLabel="Calendar Collection View">
+                                <rect key="frame" x="0.0" y="100" width="375" height="375"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0yY-Eo-ZOj">
                                     <size key="itemSize" width="50" height="50"/>
@@ -65,15 +78,19 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="jWz-eB-Sl3" firstAttribute="top" secondItem="MOi-Nd-9vp" secondAttribute="top" id="G83-2c-hcZ"/>
+                            <constraint firstItem="jWz-eB-Sl3" firstAttribute="leading" secondItem="k3T-uk-Ok8" secondAttribute="leading" id="JnE-Ns-ePA"/>
+                            <constraint firstItem="6ZT-9R-WvA" firstAttribute="top" secondItem="jWz-eB-Sl3" secondAttribute="bottom" id="KOA-fJ-6mt"/>
+                            <constraint firstItem="jWz-eB-Sl3" firstAttribute="trailing" secondItem="k3T-uk-Ok8" secondAttribute="trailing" id="Pgh-R7-qKl"/>
                             <constraint firstAttribute="trailing" secondItem="6ZT-9R-WvA" secondAttribute="trailing" id="Prh-kf-5ax"/>
                             <constraint firstItem="6ZT-9R-WvA" firstAttribute="leading" secondItem="MOi-Nd-9vp" secondAttribute="leading" id="fX9-4B-D99"/>
                             <constraint firstAttribute="bottom" secondItem="6ZT-9R-WvA" secondAttribute="bottom" id="h8r-nA-YPZ"/>
-                            <constraint firstItem="6ZT-9R-WvA" firstAttribute="top" secondItem="MOi-Nd-9vp" secondAttribute="top" id="kdV-Qm-0hK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k3T-uk-Ok8"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="6ZT-9R-WvA" id="VwD-ma-C62"/>
+                        <outlet property="calendarCollectionView" destination="6ZT-9R-WvA" id="VwD-ma-C62"/>
+                        <outlet property="headerCollectionView" destination="jWz-eB-Sl3" id="Ovh-yc-wW2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64q-uF-kdr" userLabel="First Responder" sceneMemberID="firstResponder"/>
