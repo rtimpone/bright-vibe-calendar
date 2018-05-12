@@ -26,7 +26,7 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
         collectionView.delegate = self
         self.delegate = delegate
         
-        CollectionViewSpacer.adjustSpacing(for: collectionView)
+        ItemSpacer.adjustSpacing(for: collectionView)
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionHeadersPinToVisibleBounds = true
@@ -60,10 +60,17 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
         
         switch kind {
         case UICollectionElementKindSectionHeader:
+            
             let header = dequeueSupplementaryView(ofType: HeaderView.self, ofKind: kind, for: indexPath)
-            header.updateLabels(forDays: headerDayLetters)
-            header.setSpacingBetweenEachHeaderView(to: CollectionViewSpacer.spacingBetweenItems)
+            header.setTextOfLabels(forDays: headerDayLetters)
+            header.setSpacingBetweenEachHeaderView(to: ItemSpacer.spacingBetweenItems)
+            
+            let sizeForHeaderItem = ItemSpacer.sizeForItem(in: collectionView)
+            let targetLetterWidth = sizeForHeaderItem.width / 3
+            header.updateFontSizeOfLabels(toFitWidth: targetLetterWidth)
+            
             return header
+            
         default:
             return UICollectionReusableView()
         }
@@ -79,13 +86,13 @@ extension CalendarCollectionViewHandler: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CollectionViewSpacer.sizeForItem(in: collectionView)
+        return ItemSpacer.sizeForItem(in: collectionView)
     }
 }
 
 extension CalendarCollectionViewHandler: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CollectionViewSpacer.sizeForItem(in: collectionView)
+        return ItemSpacer.sizeForItem(in: collectionView)
     }
 }

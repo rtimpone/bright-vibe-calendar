@@ -21,7 +21,8 @@
 		FB3ECDAC20A0C47B007154AB /* NibBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3ECDAB20A0C47B007154AB /* NibBased.swift */; };
 		FB671BE620A7539F000B0EB4 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB671BE520A7539F000B0EB4 /* HeaderView.swift */; };
 		FB671BE820A753A5000B0EB4 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB671BE720A753A5000B0EB4 /* HeaderView.xib */; };
-		FBF8151120A284E6000F586F /* CollectionViewSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8151020A284E6000F586F /* CollectionViewSpacer.swift */; };
+		FB671BEB20A76140000B0EB4 /* FontSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB671BEA20A76140000B0EB4 /* FontSizeCalculator.swift */; };
+		FBF8151120A284E6000F586F /* ItemSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8151020A284E6000F586F /* ItemSpacer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +42,8 @@
 		FB3ECDAB20A0C47B007154AB /* NibBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibBased.swift; sourceTree = "<group>"; };
 		FB671BE520A7539F000B0EB4 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB671BE720A753A5000B0EB4 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
-		FBF8151020A284E6000F586F /* CollectionViewSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSpacer.swift; sourceTree = "<group>"; };
+		FB671BEA20A76140000B0EB4 /* FontSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeCalculator.swift; sourceTree = "<group>"; };
+		FBF8151020A284E6000F586F /* ItemSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSpacer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			children = (
 				FB378568209CDC71007EC68C /* AppDelegate.swift */,
 				FB378574209CDC72007EC68C /* Info.plist */,
+				FB671BE920A76132000B0EB4 /* Calculators */,
 				FBF8151720A28DD4000F586F /* Collection View Helpers */,
 				FBF8151620A28DC5000F586F /* Cells */,
 				FBF8151A20A28E0E000F586F /* Protocols */,
@@ -96,6 +99,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		FB671BE920A76132000B0EB4 /* Calculators */ = {
+			isa = PBXGroup;
+			children = (
+				FB671BEA20A76140000B0EB4 /* FontSizeCalculator.swift */,
+			);
+			path = Calculators;
+			sourceTree = "<group>";
+		};
 		FBF8151620A28DC5000F586F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,7 +121,7 @@
 			children = (
 				FB3ECDA520A0C43D007154AB /* CollectionViewHandler.swift */,
 				FB3ECDA920A0C459007154AB /* CalendarCollectionViewHandler.swift */,
-				FBF8151020A284E6000F586F /* CollectionViewSpacer.swift */,
+				FBF8151020A284E6000F586F /* ItemSpacer.swift */,
 			);
 			path = "Collection View Helpers";
 			sourceTree = "<group>";
@@ -215,13 +226,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBF8151120A284E6000F586F /* CollectionViewSpacer.swift in Sources */,
+				FBF8151120A284E6000F586F /* ItemSpacer.swift in Sources */,
 				FB378587209CF917007EC68C /* CircleView.swift in Sources */,
 				FB37857B209CE101007EC68C /* CalendarViewController.swift in Sources */,
 				FB37857D209CE157007EC68C /* ContainerViewController.swift in Sources */,
 				FB37857F209CEB41007EC68C /* DayCell.swift in Sources */,
 				FB378569209CDC71007EC68C /* AppDelegate.swift in Sources */,
 				FB671BE620A7539F000B0EB4 /* HeaderView.swift in Sources */,
+				FB671BEB20A76140000B0EB4 /* FontSizeCalculator.swift in Sources */,
 				FB3ECDAA20A0C459007154AB /* CalendarCollectionViewHandler.swift in Sources */,
 				FB3ECDAC20A0C47B007154AB /* NibBased.swift in Sources */,
 				FB3ECDA620A0C43D007154AB /* CollectionViewHandler.swift in Sources */,

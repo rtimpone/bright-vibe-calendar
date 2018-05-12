@@ -24,11 +24,30 @@ class HeaderView: UICollectionReusableView, NibBased {
         stackView.spacing = spacing
     }
     
-    func updateLabels(forDays days: [String]) {
+    func setTextOfLabels(forDays days: [String]) {
         for (index, textForDay) in days.enumerated() {
             if let dayLabel = label(forIndex: index) {
                 dayLabel.text = textForDay
             }
+        }
+    }
+    
+    func updateFontSizeOfLabels(toFitWidth width: CGFloat) {
+        
+        var minFontSize = FontSizeCalculator.largestSupportedFontSize
+        
+        let labels = allLabels()
+        for label in labels {
+            let fontSize = FontSizeCalculator.calculateFontSize(toFitWidth: width, withText: label.text!, forFont: label.font)
+            if fontSize < minFontSize {
+                minFontSize = fontSize
+            }
+        }
+        
+        for label in labels {
+            let oldFont = label.font!
+            let newFont = UIFont(name: oldFont.fontName, size: minFontSize)
+            label.font = newFont
         }
     }
 }
@@ -37,25 +56,15 @@ private extension HeaderView {
     
     func label(forIndex index: Int) -> UILabel? {
         
-        let dayNumber = index + 1
-        
-        switch dayNumber {
-        case 1:
-            return day1Label
-        case 2:
-            return day2Label
-        case 3:
-            return day3Label
-        case 4:
-            return day4Label
-        case 5:
-            return day5Label
-        case 6:
-            return day6Label
-        case 7:
-            return day7Label
-        default:
+        let labels = allLabels()
+        guard index < labels.count else {
             return nil
         }
+        
+        return labels[index]
+    }
+    
+    func allLabels() -> [UILabel] {
+        return [day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, day7Label]
     }
 }

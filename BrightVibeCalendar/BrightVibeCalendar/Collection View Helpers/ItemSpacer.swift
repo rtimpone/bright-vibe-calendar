@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct CollectionViewSpacer {
+struct ItemSpacer {
     
     static let spacingBetweenItems: CGFloat = 0
     
