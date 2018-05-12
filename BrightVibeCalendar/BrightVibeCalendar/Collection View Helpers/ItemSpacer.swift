@@ -23,11 +23,18 @@ struct ItemSpacer {
     }
     
     static func sizeForItem(in collectionView: UICollectionView) -> CGSize {
+
+        let leftInset = collectionView.contentInset.left
+        let rightInset = collectionView.contentInset.right
+        let boundsWidth = collectionView.bounds.width
         
-        let contentWidth = collectionView.contentSize.width
+        //have to use bounds here instead of contentSize.width b/c contentSize may be incorrect during rotation
+        let contentWidth = boundsWidth - leftInset - rightInset
+        
         let itemsPerRow: CGFloat = 7
         let itemWidth = contentWidth / itemsPerRow
         let itemHeight = itemWidth
+        
         return CGSize(width: itemWidth, height: itemHeight)
     }
 }
