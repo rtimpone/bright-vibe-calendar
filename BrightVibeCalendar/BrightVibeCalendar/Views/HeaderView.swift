@@ -34,19 +34,19 @@ class HeaderView: UICollectionReusableView, NibBased {
     
     func updateFontSizeOfLabels(toFitWidth width: CGFloat) {
         
-        var minFontSize = FontSizeCalculator.largestSupportedFontSize
+        var minFontSizeThatFitsWidth = FontSizeCalculator.maximumFontSize
         
         let labels = allLabels()
         for label in labels {
             let fontSize = FontSizeCalculator.calculateFontSize(toFitWidth: width, withText: label.text!, forFont: label.font)
-            if fontSize < minFontSize {
-                minFontSize = fontSize
+            if fontSize < minFontSizeThatFitsWidth {
+                minFontSizeThatFitsWidth = fontSize
             }
         }
         
         for label in labels {
             let oldFont = label.font!
-            let newFont = UIFont(name: oldFont.fontName, size: minFontSize)
+            let newFont = UIFont(name: oldFont.fontName, size: minFontSizeThatFitsWidth)
             label.font = newFont
         }
     }

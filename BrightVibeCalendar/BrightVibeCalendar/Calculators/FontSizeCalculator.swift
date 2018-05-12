@@ -10,7 +10,8 @@ import UIKit
 
 struct FontSizeCalculator {
     
-    static let largestSupportedFontSize: CGFloat = 200
+    static let maximumFontSize: CGFloat = 200
+    static let minimumFontSize: CGFloat = 4
     
     static func calculateFontSize(toFitWidth width: CGFloat, withText text: String, forFont font: UIFont) -> CGFloat {
         
@@ -18,27 +19,35 @@ struct FontSizeCalculator {
         let sizingLabel = UILabel(frame: frame)
         sizingLabel.text = text
         
-        var tempFontSize = largestSupportedFontSize
+        var calculatedFontSize = maximumFontSize
         var foundASizeThatFitsWidth = false
         
         while !foundASizeThatFitsWidth {
+            
             let nstext = text as NSString
-            guard let adjustedFont = UIFont(name: font.fontName, size: tempFontSize) else {
-                fatalError("Could not create font with name \(font.fontName) and size \(tempFontSize)")
+            
+            guard let adjustedFont = UIFont(name: font.fontName, size: calculatedFontSize) else {
+                fatalError("Could not create font with name \(font.fontName) and size \(calculatedFontSize)")
+            }
+            
+            if adjustedFont.pointSize < minimumFontSize {
+                calculatedFontSize = minimumFontSize
+                break
             }
             
             let attributes = [NSAttributedStringKey.font: adjustedFont]
             let calculatedSize = nstext.size(withAttributes: attributes)
+            
             if calculatedSize.width > width {
-                print("Font with size \(tempFontSize) was too large, trying a smaller number")
-                tempFontSize -= 1
+                print("Font with size \(calculatedFontSize) was too large, trying a smaller number")
+                calculatedFontSize -= 1
             }
             else {
-                print("Font with size \(tempFontSize) fits width of \(width)")
+                print("Font with size \(calculatedFontSize) fits width of \(width)")
                 foundASizeThatFitsWidth = true
             }
         }
         
-        return tempFontSize
+        return calculatedFontSize
     }
 }
