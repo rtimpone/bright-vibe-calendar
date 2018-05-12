@@ -19,11 +19,17 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
     private var selectedItem: Int = 1
     
     func setupWith(collectionView: UICollectionView, delegate: CalendarCollectionViewHandlerDelegate) {
+        
         self.collectionView = collectionView
         collectionView.dataSource = self
         collectionView.delegate = self
         self.delegate = delegate
+        
         CollectionViewSpacer.adjustSpacing(for: collectionView)
+        
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.sectionHeadersPinToVisibleBounds = true
+        }
     }
 }
 
@@ -48,6 +54,16 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
         cell.updateForState(cellState)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            return dequeueSupplementaryView(ofType: HeaderCell.self, ofKind: kind, for: indexPath)
+        default:
+            return UICollectionReusableView()
+        }
+    }
 }
 
 extension CalendarCollectionViewHandler: UICollectionViewDelegate {
@@ -56,6 +72,10 @@ extension CalendarCollectionViewHandler: UICollectionViewDelegate {
         selectedItem = item(for: indexPath)
         delegate?.didSelectItem(selectedItem)
         collectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CollectionViewSpacer.sizeForItem(in: collectionView)
     }
 }
 
