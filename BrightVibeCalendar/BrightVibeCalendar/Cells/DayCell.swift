@@ -18,15 +18,35 @@ class DayCell: UICollectionViewCell, NibBased {
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var circleView: UIView!
+    @IBOutlet weak var monthStartView: UIView!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var monthDayLabel: UILabel!
+    
+    func updateForDay(_ day: Int) {
+        
+        let dayText = "\(day)"
+        dayLabel.text = dayText
+        monthDayLabel.text = dayText
+        
+        let shouldShowMonthLabel = day == 1
+        dayLabel.isHidden = shouldShowMonthLabel
+        monthStartView.isHidden = !shouldShowMonthLabel
+    }
     
     func updateForState(_ state: CellState) {
         switch state {
         case .selected:
             circleView.isHidden = false
-            dayLabel.textColor = UIColor.white
+            let textColor = UIColor.white
+            dayLabel.textColor = textColor
+            monthLabel.textColor = textColor
+            monthDayLabel.textColor = textColor
         case .unselected:
             circleView.isHidden = true
-            dayLabel.textColor = Colors.purpleColor
+            let textColor = Colors.purpleColor
+            dayLabel.textColor = textColor
+            monthLabel.textColor = textColor
+            monthDayLabel.textColor = textColor
         }
     }
 }

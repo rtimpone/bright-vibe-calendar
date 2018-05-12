@@ -19,10 +19,10 @@
 		FB3ECDA620A0C43D007154AB /* CollectionViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3ECDA520A0C43D007154AB /* CollectionViewHandler.swift */; };
 		FB3ECDAA20A0C459007154AB /* CalendarCollectionViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3ECDA920A0C459007154AB /* CalendarCollectionViewHandler.swift */; };
 		FB3ECDAC20A0C47B007154AB /* NibBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3ECDAB20A0C47B007154AB /* NibBased.swift */; };
-		FBF8150F20A28386000F586F /* HeaderCollectionViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8150E20A28386000F586F /* HeaderCollectionViewHandler.swift */; };
-		FBF8151120A284E6000F586F /* CollectionViewSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8151020A284E6000F586F /* CollectionViewSpacer.swift */; };
-		FBF8151320A2899E000F586F /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8151220A2899E000F586F /* HeaderCell.swift */; };
-		FBF8151520A289C8000F586F /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF8151420A289C8000F586F /* HeaderCell.xib */; };
+		FB671BE620A7539F000B0EB4 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB671BE520A7539F000B0EB4 /* HeaderView.swift */; };
+		FB671BE820A753A5000B0EB4 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB671BE720A753A5000B0EB4 /* HeaderView.xib */; };
+		FB671BEB20A76140000B0EB4 /* FontSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB671BEA20A76140000B0EB4 /* FontSizeCalculator.swift */; };
+		FBF8151120A284E6000F586F /* ItemSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8151020A284E6000F586F /* ItemSpacer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,10 +40,10 @@
 		FB3ECDA520A0C43D007154AB /* CollectionViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHandler.swift; sourceTree = "<group>"; };
 		FB3ECDA920A0C459007154AB /* CalendarCollectionViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewHandler.swift; sourceTree = "<group>"; };
 		FB3ECDAB20A0C47B007154AB /* NibBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibBased.swift; sourceTree = "<group>"; };
-		FBF8150E20A28386000F586F /* HeaderCollectionViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewHandler.swift; sourceTree = "<group>"; };
-		FBF8151020A284E6000F586F /* CollectionViewSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSpacer.swift; sourceTree = "<group>"; };
-		FBF8151220A2899E000F586F /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
-		FBF8151420A289C8000F586F /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
+		FB671BE520A7539F000B0EB4 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		FB671BE720A753A5000B0EB4 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		FB671BEA20A76140000B0EB4 /* FontSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeCalculator.swift; sourceTree = "<group>"; };
+		FBF8151020A284E6000F586F /* ItemSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSpacer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,24 +77,80 @@
 			isa = PBXGroup;
 			children = (
 				FB378568209CDC71007EC68C /* AppDelegate.swift */,
-				FB37857A209CE101007EC68C /* CalendarViewController.swift */,
-				FB3ECDA920A0C459007154AB /* CalendarCollectionViewHandler.swift */,
-				FB3ECDA520A0C43D007154AB /* CollectionViewHandler.swift */,
-				FBF8151020A284E6000F586F /* CollectionViewSpacer.swift */,
-				FB378586209CF917007EC68C /* CircleView.swift */,
-				FB37857C209CE157007EC68C /* ContainerViewController.swift */,
-				FB37857E209CEB41007EC68C /* DayCell.swift */,
-				FB378580209CEB48007EC68C /* DayCell.xib */,
-				FBF8151220A2899E000F586F /* HeaderCell.swift */,
-				FBF8151420A289C8000F586F /* HeaderCell.xib */,
-				FBF8150E20A28386000F586F /* HeaderCollectionViewHandler.swift */,
-				FB3ECDAB20A0C47B007154AB /* NibBased.swift */,
-				FB37856C209CDC71007EC68C /* Main.storyboard */,
-				FB37856F209CDC72007EC68C /* Assets.xcassets */,
-				FB378571209CDC72007EC68C /* LaunchScreen.storyboard */,
 				FB378574209CDC72007EC68C /* Info.plist */,
+				FB671BE920A76132000B0EB4 /* Calculators */,
+				FBF8151720A28DD4000F586F /* Collection View Helpers */,
+				FBF8151620A28DC5000F586F /* Cells */,
+				FBF8151A20A28E0E000F586F /* Protocols */,
+				FBF8151820A28DF6000F586F /* UI */,
+				FBF8151920A28E04000F586F /* View Controllers */,
+				FB671BE420A75392000B0EB4 /* Views */,
 			);
 			path = BrightVibeCalendar;
+			sourceTree = "<group>";
+		};
+		FB671BE420A75392000B0EB4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FB378586209CF917007EC68C /* CircleView.swift */,
+				FB671BE520A7539F000B0EB4 /* HeaderView.swift */,
+				FB671BE720A753A5000B0EB4 /* HeaderView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FB671BE920A76132000B0EB4 /* Calculators */ = {
+			isa = PBXGroup;
+			children = (
+				FB671BEA20A76140000B0EB4 /* FontSizeCalculator.swift */,
+			);
+			path = Calculators;
+			sourceTree = "<group>";
+		};
+		FBF8151620A28DC5000F586F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FB37857E209CEB41007EC68C /* DayCell.swift */,
+				FB378580209CEB48007EC68C /* DayCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FBF8151720A28DD4000F586F /* Collection View Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FB3ECDA520A0C43D007154AB /* CollectionViewHandler.swift */,
+				FB3ECDA920A0C459007154AB /* CalendarCollectionViewHandler.swift */,
+				FBF8151020A284E6000F586F /* ItemSpacer.swift */,
+			);
+			path = "Collection View Helpers";
+			sourceTree = "<group>";
+		};
+		FBF8151820A28DF6000F586F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FB37856F209CDC72007EC68C /* Assets.xcassets */,
+				FB378571209CDC72007EC68C /* LaunchScreen.storyboard */,
+				FB37856C209CDC71007EC68C /* Main.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		FBF8151920A28E04000F586F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FB37857A209CE101007EC68C /* CalendarViewController.swift */,
+				FB37857C209CE157007EC68C /* ContainerViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FBF8151A20A28E0E000F586F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FB3ECDAB20A0C47B007154AB /* NibBased.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,9 +211,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBF8151520A289C8000F586F /* HeaderCell.xib in Resources */,
 				FB378573209CDC72007EC68C /* LaunchScreen.storyboard in Resources */,
 				FB378570209CDC72007EC68C /* Assets.xcassets in Resources */,
+				FB671BE820A753A5000B0EB4 /* HeaderView.xib in Resources */,
 				FB378581209CEB48007EC68C /* DayCell.xib in Resources */,
 				FB37856E209CDC71007EC68C /* Main.storyboard in Resources */,
 			);
@@ -170,16 +226,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBF8151120A284E6000F586F /* CollectionViewSpacer.swift in Sources */,
+				FBF8151120A284E6000F586F /* ItemSpacer.swift in Sources */,
 				FB378587209CF917007EC68C /* CircleView.swift in Sources */,
 				FB37857B209CE101007EC68C /* CalendarViewController.swift in Sources */,
 				FB37857D209CE157007EC68C /* ContainerViewController.swift in Sources */,
-				FBF8150F20A28386000F586F /* HeaderCollectionViewHandler.swift in Sources */,
 				FB37857F209CEB41007EC68C /* DayCell.swift in Sources */,
 				FB378569209CDC71007EC68C /* AppDelegate.swift in Sources */,
+				FB671BE620A7539F000B0EB4 /* HeaderView.swift in Sources */,
+				FB671BEB20A76140000B0EB4 /* FontSizeCalculator.swift in Sources */,
 				FB3ECDAA20A0C459007154AB /* CalendarCollectionViewHandler.swift in Sources */,
 				FB3ECDAC20A0C47B007154AB /* NibBased.swift in Sources */,
-				FBF8151320A2899E000F586F /* HeaderCell.swift in Sources */,
 				FB3ECDA620A0C43D007154AB /* CollectionViewHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
