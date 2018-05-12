@@ -151,6 +151,15 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="E9S-ZW-vAw"/>
+            <connections>
+                <outlet property="day1Label" destination="k29-Zq-KWe" id="CpZ-aY-CaD"/>
+                <outlet property="day2Label" destination="puX-g0-rHv" id="WLI-Ga-cAI"/>
+                <outlet property="day3Label" destination="3UG-kY-2G7" id="w9m-T3-a2A"/>
+                <outlet property="day4Label" destination="sDi-Fx-rR3" id="28F-2u-BAd"/>
+                <outlet property="day5Label" destination="JE6-Ld-xr3" id="fgI-XQ-Vp1"/>
+                <outlet property="day6Label" destination="Srs-f3-Rxu" id="6pC-QR-FE3"/>
+                <outlet property="day7Label" destination="hbc-sp-MqR" id="8Tf-CI-zWa"/>
+            </connections>
             <point key="canvasLocation" x="-48" y="-171"/>
         </view>
     </objects>

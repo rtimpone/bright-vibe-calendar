@@ -95,6 +95,7 @@
 		FB671BE420A75392000B0EB4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FB378586209CF917007EC68C /* CircleView.swift */,
 				FB671BE520A7539F000B0EB4 /* HeaderView.swift */,
 				FB671BE720A753A5000B0EB4 /* HeaderView.xib */,
 			);
@@ -127,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				FB37856F209CDC72007EC68C /* Assets.xcassets */,
-				FB378586209CF917007EC68C /* CircleView.swift */,
 				FB378571209CDC72007EC68C /* LaunchScreen.storyboard */,
 				FB37856C209CDC71007EC68C /* Main.storyboard */,
 			);

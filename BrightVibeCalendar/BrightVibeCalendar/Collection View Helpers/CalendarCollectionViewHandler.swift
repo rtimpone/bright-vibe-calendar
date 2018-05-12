@@ -17,6 +17,7 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
     
     weak var delegate: CalendarCollectionViewHandlerDelegate?
     private var selectedItem: Int = 1
+    let headerDayLetters = ["S", "M", "T", "W", "T", "F", "S"]
     
     func setupWith(collectionView: UICollectionView, delegate: CalendarCollectionViewHandlerDelegate) {
         
@@ -59,7 +60,9 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
         
         switch kind {
         case UICollectionElementKindSectionHeader:
-            return dequeueSupplementaryView(ofType: HeaderView.self, ofKind: kind, for: indexPath)
+            let header = dequeueSupplementaryView(ofType: HeaderView.self, ofKind: kind, for: indexPath)
+            header.updateLabels(forDays: headerDayLetters)
+            return header
         default:
             return UICollectionReusableView()
         }
