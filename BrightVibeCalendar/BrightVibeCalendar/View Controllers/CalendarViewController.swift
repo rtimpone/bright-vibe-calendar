@@ -11,21 +11,17 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     
-    @IBOutlet weak var headerCollectionView: UICollectionView!
-    @IBOutlet weak var calendarCollectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    var headerHandler = HeaderCollectionViewHandler()
     var collectionViewHandler = CalendarCollectionViewHandler()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        headerHandler.setupWith(collectionView: headerCollectionView)
-        collectionViewHandler.setupWith(collectionView: calendarCollectionView, delegate: self)
+        collectionViewHandler.setupWith(collectionView: collectionView, delegate: self)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        headerHandler.updateCollectionViewLayout()
         collectionViewHandler.updateCollectionViewLayout()
     }
 }
