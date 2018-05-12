@@ -59,7 +59,7 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
         
         switch kind {
         case UICollectionElementKindSectionHeader:
-            return dequeueSupplementaryView(ofType: HeaderCell.self, ofKind: kind, for: indexPath)
+            return dequeueSupplementaryView(ofType: HeaderView.self, ofKind: kind, for: indexPath)
         default:
             return UICollectionReusableView()
         }
