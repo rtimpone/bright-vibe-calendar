@@ -159,6 +159,7 @@
                 <outlet property="day5Label" destination="JE6-Ld-xr3" id="fgI-XQ-Vp1"/>
                 <outlet property="day6Label" destination="Srs-f3-Rxu" id="6pC-QR-FE3"/>
                 <outlet property="day7Label" destination="hbc-sp-MqR" id="8Tf-CI-zWa"/>
+                <outlet property="stackView" destination="Eir-UU-VuI" id="oLk-Iw-O6k"/>
             </connections>
             <point key="canvasLocation" x="-48" y="-171"/>
         </view>

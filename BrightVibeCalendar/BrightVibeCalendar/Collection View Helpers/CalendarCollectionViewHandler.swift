@@ -62,6 +62,7 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
         case UICollectionElementKindSectionHeader:
             let header = dequeueSupplementaryView(ofType: HeaderView.self, ofKind: kind, for: indexPath)
             header.updateLabels(forDays: headerDayLetters)
+            header.setSpacingBetweenEachHeaderView(to: CollectionViewSpacer.spacingBetweenItems)
             return header
         default:
             return UICollectionReusableView()

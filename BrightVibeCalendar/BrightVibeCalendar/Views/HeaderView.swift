@@ -10,6 +10,8 @@ import UIKit
 
 class HeaderView: UICollectionReusableView, NibBased {
     
+    @IBOutlet weak var stackView: UIStackView!
+    
     @IBOutlet weak var day1Label: UILabel!
     @IBOutlet weak var day2Label: UILabel!
     @IBOutlet weak var day3Label: UILabel!
@@ -17,6 +19,10 @@ class HeaderView: UICollectionReusableView, NibBased {
     @IBOutlet weak var day5Label: UILabel!
     @IBOutlet weak var day6Label: UILabel!
     @IBOutlet weak var day7Label: UILabel!
+    
+    func setSpacingBetweenEachHeaderView(to spacing: CGFloat) {
+        stackView.spacing = spacing
+    }
     
     func updateLabels(forDays days: [String]) {
         for (index, textForDay) in days.enumerated() {
