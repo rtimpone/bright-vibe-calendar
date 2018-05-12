@@ -17,7 +17,9 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
     
     weak var delegate: CalendarCollectionViewHandlerDelegate?
     private var selectedItem: Int = 1
+    var dates: [Int] = []
     let headerDayLetters = ["S", "M", "T", "W", "T", "F", "S"]
+    var fontSizeToUseForCells = FontSizeCalculator.maximumFontSize
     
     func setupWith(collectionView: UICollectionView, delegate: CalendarCollectionViewHandlerDelegate) {
         
@@ -31,13 +33,38 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionHeadersPinToVisibleBounds = true
         }
+        
+        for i in 0...200 {
+            dates.append(i % 31 + 1)
+        }
+    }
+    
+    func updateCollectionViewLayout() {
+        
+        collectionView.collectionViewLayout.invalidateLayout()
+        
+        var datesAsStrings: [String] = []
+        for i in 1...31 {
+            datesAsStrings.append("\(i)")
+        }
+        
+        let itemSize = ItemSpacer.sizeForItem(in: collectionView)
+        let width = itemSize.width / 3
+        let tempCell = dequeueReusableCell(ofType: DayCell.self, for: IndexPath(item: 0, section: 0))
+        let font = tempCell.dayLabel.font!
+        
+        fontSizeToUseForCells = FontSizeCalculator.calculateSmallestFontSize(forStrings: datesAsStrings, toFitInWidth: width, usingFont: font)
+    }
+    
+    func resizeCollectionView() {
+        collectionView.reloadData()
     }
 }
 
 private extension CalendarCollectionViewHandler {
     
     func item(for indexPath: IndexPath) -> Int {
-        return indexPath.row % 31 + 1
+        return dates[indexPath.row]
     }
 }
 
@@ -48,11 +75,20 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(ofType: DayCell.self, for: indexPath)
+        
         let day = item(for: indexPath)
+        
+        let cell = dequeueReusableCell(ofType: DayCell.self, for: indexPath)
         cell.updateForDay(day)
+        
         let cellState: DayCell.CellState = day == selectedItem ? .selected : .unselected
         cell.updateForState(cellState)
+
+        let newFont = UIFont(name: cell.dayLabel.font.fontName, size: fontSizeToUseForCells)
+        cell.dayLabel.font = newFont
+        cell.monthLabel.font = newFont
+        cell.monthDayLabel.font = newFont
+        
         return cell
     }
     

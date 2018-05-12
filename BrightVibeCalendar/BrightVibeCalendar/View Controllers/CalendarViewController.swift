@@ -19,10 +19,11 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         collectionViewHandler.setupWith(collectionView: collectionView, delegate: self)
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         collectionViewHandler.updateCollectionViewLayout()
+        collectionViewHandler.resizeCollectionView()
     }
 }
 

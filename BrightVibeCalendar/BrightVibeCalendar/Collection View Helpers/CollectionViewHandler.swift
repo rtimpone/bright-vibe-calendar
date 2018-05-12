@@ -52,8 +52,4 @@ class CollectionViewHandler: NSObject {
         
         return castedCell
     }
-    
-    func updateCollectionViewLayout() {
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
 }
