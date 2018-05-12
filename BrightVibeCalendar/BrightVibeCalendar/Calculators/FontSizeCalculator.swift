@@ -13,8 +13,25 @@ struct FontSizeCalculator {
     static let maximumFontSize: CGFloat = 200
     static let minimumFontSize: CGFloat = 4
     
-    static func calculateFontSize(toFitWidth width: CGFloat, withText text: String, forFont font: UIFont) -> CGFloat {
+    static func calculateSmallestFontSize(forStrings strings: [String], toFitInWidth targetWidth: CGFloat, usingFont font: UIFont) -> CGFloat {
+        
+        var minFontSizeThatFitsWidth = maximumFontSize
+        
+        for string in strings {
+            let fontSize = calculateFontSize(toFitWidth: targetWidth, withText: string, forFont: font)
+            if fontSize < minFontSizeThatFitsWidth {
+                minFontSizeThatFitsWidth = fontSize
+            }
+        }
+        
+        return minFontSizeThatFitsWidth
+    }
+}
 
+private extension FontSizeCalculator {
+
+    static func calculateFontSize(toFitWidth width: CGFloat, withText text: String, forFont font: UIFont) -> CGFloat {
+        
         var calculatedFontSize = maximumFontSize
         var doneCalculating = false
         
@@ -41,9 +58,6 @@ struct FontSizeCalculator {
         
         return calculatedFontSize
     }
-}
-
-private extension FontSizeCalculator {
     
     static func calculateWidth(toFitText text: String, withFont font: UIFont) -> CGFloat {
         
