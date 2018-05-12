@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NsU-at-ArG" customClass="DayCell" customModule="BrightVibeCalendar" customModuleProvider="target">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="NsU-at-ArG" customClass="DayCell" customModule="BrightVibeCalendar" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -22,10 +22,31 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWR-jm-RBk">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-mB-5aa" customClass="CircleView" customModule="BrightVibeCalendar" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDY-oP-hzr" userLabel="Circle View Container">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.22352941176470587" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <viewLayoutGuide key="safeArea" id="5OO-Bl-C2M"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-mB-5aa" userLabel="Outer Circle View" customClass="CircleView" customModule="BrightVibeCalendar" customModuleProvider="target">
+                                        <rect key="frame" x="-7" y="-7" width="64" height="64"/>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.22352941179999999" blue="0.49803921569999998" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <viewLayoutGuide key="safeArea" id="5OO-Bl-C2M"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNA-XV-sHz" userLabel="Innter Circle View" customClass="CircleView" customModule="BrightVibeCalendar" customModuleProvider="target">
+                                        <rect key="frame" x="3" y="3" width="44" height="44"/>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.22352941179999999" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <viewLayoutGuide key="safeArea" id="CEA-9X-YwE"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aaT-mB-5aa" secondAttribute="trailing" constant="-7" id="7r5-Sx-3Gu"/>
+                                    <constraint firstItem="TNA-XV-sHz" firstAttribute="top" secondItem="aaT-mB-5aa" secondAttribute="top" constant="10" id="9yr-tG-6J7"/>
+                                    <constraint firstItem="TNA-XV-sHz" firstAttribute="trailing" secondItem="aaT-mB-5aa" secondAttribute="trailing" constant="-10" id="A98-qY-AgG"/>
+                                    <constraint firstItem="aaT-mB-5aa" firstAttribute="leading" secondItem="aDY-oP-hzr" secondAttribute="leading" constant="-7" id="M00-4k-dpy"/>
+                                    <constraint firstAttribute="bottom" secondItem="aaT-mB-5aa" secondAttribute="bottom" constant="-7" id="SHi-sD-uYy"/>
+                                    <constraint firstItem="TNA-XV-sHz" firstAttribute="bottom" secondItem="aaT-mB-5aa" secondAttribute="bottom" constant="-10" id="mHJ-yl-c9c"/>
+                                    <constraint firstItem="aaT-mB-5aa" firstAttribute="top" secondItem="aDY-oP-hzr" secondAttribute="top" constant="-7" id="vPF-WF-StZ"/>
+                                    <constraint firstItem="TNA-XV-sHz" firstAttribute="leading" secondItem="aaT-mB-5aa" secondAttribute="leading" constant="10" id="zdC-og-CSM"/>
+                                </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08b-Ij-zyW" userLabel="Month Start View">
                                 <rect key="frame" x="11.5" y="7" width="27.5" height="37"/>
@@ -62,27 +83,27 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aDY-oP-hzr" secondAttribute="trailing" id="1Gh-00-T19"/>
                             <constraint firstItem="2fz-L5-eqk" firstAttribute="centerX" secondItem="dWR-jm-RBk" secondAttribute="centerX" id="JKF-gP-Fbx"/>
+                            <constraint firstItem="aDY-oP-hzr" firstAttribute="top" secondItem="dWR-jm-RBk" secondAttribute="top" id="Umd-St-MSM"/>
                             <constraint firstItem="08b-Ij-zyW" firstAttribute="centerY" secondItem="dWR-jm-RBk" secondAttribute="centerY" id="Upy-s8-OQF"/>
+                            <constraint firstItem="aDY-oP-hzr" firstAttribute="leading" secondItem="dWR-jm-RBk" secondAttribute="leading" id="e87-WQ-2Om"/>
                             <constraint firstItem="08b-Ij-zyW" firstAttribute="centerX" secondItem="dWR-jm-RBk" secondAttribute="centerX" id="fqM-PI-HYH"/>
+                            <constraint firstAttribute="bottom" secondItem="aDY-oP-hzr" secondAttribute="bottom" id="v23-gb-Ckg"/>
                             <constraint firstItem="2fz-L5-eqk" firstAttribute="centerY" secondItem="dWR-jm-RBk" secondAttribute="centerY" id="xDy-M3-qX0"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="0LC-s7-62B" firstAttribute="leading" secondItem="aaT-mB-5aa" secondAttribute="leading" id="1QW-JZ-9mh"/>
                 <constraint firstItem="0LC-s7-62B" firstAttribute="top" secondItem="dWR-jm-RBk" secondAttribute="top" id="2pl-5T-hfR"/>
                 <constraint firstItem="dWR-jm-RBk" firstAttribute="bottom" secondItem="0LC-s7-62B" secondAttribute="bottom" id="6vh-9E-Be3"/>
-                <constraint firstItem="aaT-mB-5aa" firstAttribute="bottom" secondItem="0LC-s7-62B" secondAttribute="bottom" id="EJK-vB-79p"/>
                 <constraint firstItem="dWR-jm-RBk" firstAttribute="trailing" secondItem="0LC-s7-62B" secondAttribute="trailing" id="QGZ-pc-VPP"/>
                 <constraint firstItem="0LC-s7-62B" firstAttribute="leading" secondItem="dWR-jm-RBk" secondAttribute="leading" id="UhW-KG-WAb"/>
-                <constraint firstItem="aaT-mB-5aa" firstAttribute="trailing" secondItem="0LC-s7-62B" secondAttribute="trailing" id="ZdU-w7-Gqk"/>
-                <constraint firstItem="0LC-s7-62B" firstAttribute="top" secondItem="aaT-mB-5aa" secondAttribute="top" id="yph-ao-w0E"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="0LC-s7-62B"/>
             <connections>
-                <outlet property="circleView" destination="aaT-mB-5aa" id="UXi-Rl-dhX"/>
+                <outlet property="circleView" destination="aDY-oP-hzr" id="5yg-9Q-rYA"/>
                 <outlet property="dayLabel" destination="2fz-L5-eqk" id="NCL-2L-ZGD"/>
                 <outlet property="monthDayLabel" destination="gUX-ch-jnB" id="6yS-1Z-k9k"/>
                 <outlet property="monthLabel" destination="m3V-gF-0Kh" id="ZGL-pC-Gf9"/>
