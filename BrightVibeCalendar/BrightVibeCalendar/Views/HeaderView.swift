@@ -20,6 +20,16 @@ class HeaderView: UICollectionReusableView, NibBased {
     @IBOutlet weak var day6Label: UILabel!
     @IBOutlet weak var day7Label: UILabel!
     
+    var gradientColor: UIColor = .clear
+    
+    override func draw(_ rect: CGRect) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height * 1.3)
+        gradientLayer.colors = [gradientColor.cgColor, gradientColor.withAlphaComponent(0).cgColor]
+        gradientLayer.locations = [0.5]
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     func setSpacingBetweenEachHeaderView(to spacing: CGFloat) {
         stackView.spacing = spacing
     }
@@ -29,6 +39,15 @@ class HeaderView: UICollectionReusableView, NibBased {
             if let dayLabel = label(forIndex: index) {
                 dayLabel.text = textForDay
             }
+        }
+    }
+    
+    func updateForTheme(_ theme: Theme) {
+        
+        gradientColor = theme.colors.background
+        
+        for label in allLabels() {
+            label.textColor = theme.colors.headerText
         }
     }
     

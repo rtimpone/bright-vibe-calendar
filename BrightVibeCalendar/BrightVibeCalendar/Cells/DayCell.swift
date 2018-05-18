@@ -10,19 +10,16 @@ import Foundation
 import UIKit
 
 class DayCell: UICollectionViewCell, NibBased {
-    
-    enum CellState {
-        case selected
-        case unselected
-    }
-    
+
     @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var circleView: UIView!
+    @IBOutlet weak var circleViewsContainerView: UIView!
+    @IBOutlet weak var outerCircleView: UIView!
+    @IBOutlet weak var innerCircleView: UIView!
     @IBOutlet weak var monthStartView: UIView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var monthDayLabel: UILabel!
     
-    func updateForDay(_ day: Int) {
+    func updateForDay(_ day: Int, selected isSelected: Bool, fontSize: CGFloat, theme: Theme) {
         
         let dayText = "\(day)"
         dayLabel.text = dayText
@@ -31,43 +28,20 @@ class DayCell: UICollectionViewCell, NibBased {
         let shouldShowMonthLabel = day == 1
         dayLabel.isHidden = shouldShowMonthLabel
         monthStartView.isHidden = !shouldShowMonthLabel
-    }
-    
-    func updateForState(_ state: CellState) {
-        switch state {
-        case .selected:
-            circleView.isHidden = false
-            let textColor = UIColor.white
-            dayLabel.textColor = textColor
-            monthLabel.textColor = textColor
-            monthDayLabel.textColor = textColor
-        case .unselected:
-            circleView.isHidden = true
-            let textColor = Colors.purpleColor
-            dayLabel.textColor = textColor
-            monthLabel.textColor = textColor
-            monthDayLabel.textColor = textColor
-        }
-    }
-}
-
-struct Colors {
-    
-    static let purpleColor = color(forHex: "#5C6CC0")
-    
-    private static func color(forHex hexString: String) -> UIColor {
         
-        var tempHexString = hexString
-        tempHexString = tempHexString.replacingOccurrences(of: "#", with: "")
+        circleViewsContainerView.isHidden = !isSelected
+        let textColor = isSelected ? theme.colors.dateTextSelected : theme.colors.dateTextUnselected
+        dayLabel.textColor = textColor
+        monthLabel.textColor = textColor
+        monthDayLabel.textColor = textColor
         
-        var rgbValue: UInt32 = 0
-        Scanner(string: tempHexString).scanHexInt32(&rgbValue)
+        let newFont = UIFont(name: dayLabel.font.fontName, size: fontSize)
+        dayLabel.font = newFont
+        monthLabel.font = newFont
+        monthDayLabel.font = newFont
         
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
+        let circleColor = theme.colors.selectedDate
+        outerCircleView.backgroundColor = circleColor.withAlphaComponent(0.4)
+        innerCircleView.backgroundColor = circleColor
     }
 }

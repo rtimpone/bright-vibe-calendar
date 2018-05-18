@@ -23,7 +23,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWR-jm-RBk">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDY-oP-hzr" userLabel="Circle View Container">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDY-oP-hzr" userLabel="Circle Views Container">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-mB-5aa" userLabel="Outer Circle View" customClass="CircleView" customModule="BrightVibeCalendar" customModuleProvider="target">
@@ -108,11 +108,13 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="0LC-s7-62B"/>
             <connections>
-                <outlet property="circleView" destination="aDY-oP-hzr" id="5yg-9Q-rYA"/>
+                <outlet property="circleViewsContainerView" destination="aDY-oP-hzr" id="b1U-5g-hzA"/>
                 <outlet property="dayLabel" destination="2fz-L5-eqk" id="NCL-2L-ZGD"/>
+                <outlet property="innerCircleView" destination="TNA-XV-sHz" id="pxJ-gA-7vT"/>
                 <outlet property="monthDayLabel" destination="gUX-ch-jnB" id="6yS-1Z-k9k"/>
                 <outlet property="monthLabel" destination="m3V-gF-0Kh" id="ZGL-pC-Gf9"/>
                 <outlet property="monthStartView" destination="08b-Ij-zyW" id="2in-OO-0hS"/>
+                <outlet property="outerCircleView" destination="aaT-mB-5aa" id="EBA-NC-YxL"/>
             </connections>
             <point key="canvasLocation" x="-246" y="-56"/>
         </collectionViewCell>
