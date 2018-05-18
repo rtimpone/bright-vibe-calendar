@@ -101,6 +101,7 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
             let targetLetterWidth = sizeForHeaderItem.width / 3
             header.updateFontSizeOfLabels(toFitWidth: targetLetterWidth)
             header.updateForTheme(theme)
+            header.updateForCollectionViewInsets(ItemSpacer.insets)
             
             return header
             
