@@ -20,6 +20,27 @@ class HeaderView: UICollectionReusableView, NibBased {
     @IBOutlet weak var day6Label: UILabel!
     @IBOutlet weak var day7Label: UILabel!
     
+    var gradientColor: UIColor = .clear
+    var gradientLeftInsetAdjustment: CGFloat = 0
+    var gradientRightInsetAdjustment: CGFloat = 0
+    
+    override func draw(_ rect: CGRect) {
+        
+        let gradientLayer = CAGradientLayer()
+        
+        //we want this gradient view to span the entire width of the collection view and
+        //not be affected by the content insets because views like the selected date
+        //circle view may extend beyond the content size
+        
+        let x = -gradientLeftInsetAdjustment
+        let width = gradientLeftInsetAdjustment + bounds.width + gradientRightInsetAdjustment
+        gradientLayer.frame = CGRect(x: x, y: 0, width: width, height: bounds.height * 1.3)
+        
+        gradientLayer.colors = [gradientColor.cgColor, gradientColor.withAlphaComponent(0).cgColor]
+        gradientLayer.locations = [0.5]
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     func setSpacingBetweenEachHeaderView(to spacing: CGFloat) {
         stackView.spacing = spacing
     }
@@ -29,6 +50,15 @@ class HeaderView: UICollectionReusableView, NibBased {
             if let dayLabel = label(forIndex: index) {
                 dayLabel.text = textForDay
             }
+        }
+    }
+    
+    func updateForTheme(_ theme: Theme) {
+        
+        gradientColor = theme.colors.background
+        
+        for label in allLabels() {
+            label.textColor = theme.colors.headerText
         }
     }
     
@@ -44,6 +74,11 @@ class HeaderView: UICollectionReusableView, NibBased {
             let newFont = UIFont(name: oldFont.fontName, size: fontSize)
             label.font = newFont
         }
+    }
+    
+    func updateForCollectionViewInsets(_ insets: UIEdgeInsets) {
+        gradientLeftInsetAdjustment = insets.left
+        gradientRightInsetAdjustment = insets.right
     }
 }
 

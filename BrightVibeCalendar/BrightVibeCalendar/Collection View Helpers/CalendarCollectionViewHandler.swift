@@ -20,6 +20,7 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
     var dates: [Int] = []
     let headerDayLetters = ["S", "M", "T", "W", "T", "F", "S"]
     var fontSizeToUseForCells = FontSizeCalculator.maximumFontSize
+    var theme: Theme = .standard
     
     func setupWith(collectionView: UICollectionView, delegate: CalendarCollectionViewHandlerDelegate) {
         
@@ -37,6 +38,8 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
         for i in 0...200 {
             dates.append(i % 31 + 1)
         }
+        
+        collectionView.backgroundColor = theme.colors.background
     }
     
     func updateCollectionViewLayout() {
@@ -77,17 +80,10 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let day = item(for: indexPath)
-        
         let cell = dequeueReusableCell(ofType: DayCell.self, for: indexPath)
-        cell.updateForDay(day)
         
-        let cellState: DayCell.CellState = day == selectedItem ? .selected : .unselected
-        cell.updateForState(cellState)
-
-        let newFont = UIFont(name: cell.dayLabel.font.fontName, size: fontSizeToUseForCells)
-        cell.dayLabel.font = newFont
-        cell.monthLabel.font = newFont
-        cell.monthDayLabel.font = newFont
+        let isSelected = (day == selectedItem)
+        cell.updateForDay(day, selected: isSelected, fontSize: fontSizeToUseForCells, theme: theme)
         
         return cell
     }
@@ -104,6 +100,8 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
             let sizeForHeaderItem = ItemSpacer.sizeForItem(in: collectionView)
             let targetLetterWidth = sizeForHeaderItem.width / 3
             header.updateFontSizeOfLabels(toFitWidth: targetLetterWidth)
+            header.updateForTheme(theme)
+            header.updateForCollectionViewInsets(ItemSpacer.insets)
             
             return header
             

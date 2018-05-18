@@ -12,10 +12,11 @@ import UIKit
 struct ItemSpacer {
     
     static let spacingBetweenItems: CGFloat = 0
+    static let insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
     
     static func adjustSpacing(for collectionView: UICollectionView) {
         
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        collectionView.contentInset = insets
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = spacingBetweenItems
             layout.minimumLineSpacing = 1
