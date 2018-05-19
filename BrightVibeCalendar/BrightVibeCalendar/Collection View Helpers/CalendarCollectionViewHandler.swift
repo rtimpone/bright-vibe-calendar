@@ -20,7 +20,7 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
     var dates: [Int] = []
     let headerDayLetters = ["S", "M", "T", "W", "T", "F", "S"]
     var fontSizeToUseForCells = FontSizeCalculator.maximumFontSize
-    var theme: Theme = .standard
+    var theme: Theme = Themes.standard
     
     func setupWith(collectionView: UICollectionView, delegate: CalendarCollectionViewHandlerDelegate) {
         
@@ -39,7 +39,7 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
             dates.append(i % 31 + 1)
         }
         
-        collectionView.backgroundColor = theme.colors.background
+        collectionView.backgroundColor = theme.backgroundColor
     }
     
     func updateCollectionViewLayout() {

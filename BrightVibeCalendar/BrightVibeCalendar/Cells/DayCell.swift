@@ -30,7 +30,7 @@ class DayCell: UICollectionViewCell, NibBased {
         monthStartView.isHidden = !shouldShowMonthLabel
         
         circleViewsContainerView.isHidden = !isSelected
-        let textColor = isSelected ? theme.colors.dateTextSelected : theme.colors.dateTextUnselected
+        let textColor = isSelected ? theme.dateTextSelectedColor : theme.dateTextUnselectedColor
         dayLabel.textColor = textColor
         monthLabel.textColor = textColor
         monthDayLabel.textColor = textColor
@@ -40,7 +40,7 @@ class DayCell: UICollectionViewCell, NibBased {
         monthLabel.font = newFont
         monthDayLabel.font = newFont
         
-        let circleColor = theme.colors.selectedDate
+        let circleColor = theme.selectedDateColor
         outerCircleView.backgroundColor = circleColor.withAlphaComponent(0.4)
         innerCircleView.backgroundColor = circleColor
     }

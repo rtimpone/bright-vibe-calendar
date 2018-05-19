@@ -55,10 +55,10 @@ class HeaderView: UICollectionReusableView, NibBased {
     
     func updateForTheme(_ theme: Theme) {
         
-        gradientColor = theme.colors.background
+        gradientColor = theme.backgroundColor
         
         for label in allLabels() {
-            label.textColor = theme.colors.headerText
+            label.textColor = theme.headerTextColor
         }
     }
     
