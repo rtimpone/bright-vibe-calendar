@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol Theme {
+    
     var backgroundColor: UIColor { get }
     var headerTextColor: UIColor { get }
     var selectedDateColor: UIColor { get }
@@ -18,8 +19,17 @@ protocol Theme {
 }
 
 struct Themes {
+    
     static var standard: Theme {
         return StandardTheme()
+    }
+    
+    private struct StandardTheme: Theme {
+        var backgroundColor: UIColor = ColorPalette.purple.colorValue
+        var headerTextColor: UIColor = ColorPalette.mintGreen.colorValue
+        var selectedDateColor: UIColor = ColorPalette.pink.colorValue
+        var dateTextSelectedColor: UIColor = .white
+        var dateTextUnselectedColor: UIColor = ColorPalette.lightPurple.colorValue
     }
 }
 
@@ -37,12 +47,4 @@ private enum ColorPalette: String {
         }
         return color
     }
-}
-
-private struct StandardTheme: Theme {
-    var backgroundColor: UIColor = ColorPalette.purple.colorValue
-    var headerTextColor: UIColor = ColorPalette.mintGreen.colorValue
-    var selectedDateColor: UIColor = ColorPalette.pink.colorValue
-    var dateTextSelectedColor: UIColor = .white
-    var dateTextUnselectedColor: UIColor = ColorPalette.lightPurple.colorValue
 }
