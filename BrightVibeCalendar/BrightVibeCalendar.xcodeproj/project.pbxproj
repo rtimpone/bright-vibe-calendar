@@ -23,6 +23,7 @@
 		FB671BE620A7539F000B0EB4 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB671BE520A7539F000B0EB4 /* HeaderView.swift */; };
 		FB671BE820A753A5000B0EB4 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB671BE720A753A5000B0EB4 /* HeaderView.xib */; };
 		FB671BEB20A76140000B0EB4 /* FontSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB671BEA20A76140000B0EB4 /* FontSizeCalculator.swift */; };
+		FBABC5EE20B6DEBB008A1965 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBABC5ED20B6DEBB008A1965 /* CollectionViewDataSource.swift */; };
 		FBF8151120A284E6000F586F /* ItemSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8151020A284E6000F586F /* ItemSpacer.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		FB671BE520A7539F000B0EB4 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB671BE720A753A5000B0EB4 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		FB671BEA20A76140000B0EB4 /* FontSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeCalculator.swift; sourceTree = "<group>"; };
+		FBABC5ED20B6DEBB008A1965 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		FBF8151020A284E6000F586F /* ItemSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSpacer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 		FBF8151720A28DD4000F586F /* Collection View Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FBABC5ED20B6DEBB008A1965 /* CollectionViewDataSource.swift */,
 				FB3ECDA520A0C43D007154AB /* CollectionViewHandler.swift */,
 				FB3ECDA920A0C459007154AB /* CalendarCollectionViewHandler.swift */,
 				FBF8151020A284E6000F586F /* ItemSpacer.swift */,
@@ -237,6 +240,7 @@
 				FB37857F209CEB41007EC68C /* DayCell.swift in Sources */,
 				FB378569209CDC71007EC68C /* AppDelegate.swift in Sources */,
 				FB671BE620A7539F000B0EB4 /* HeaderView.swift in Sources */,
+				FBABC5EE20B6DEBB008A1965 /* CollectionViewDataSource.swift in Sources */,
 				FB671BEB20A76140000B0EB4 /* FontSizeCalculator.swift in Sources */,
 				FB3ECDAA20A0C459007154AB /* CalendarCollectionViewHandler.swift in Sources */,
 				FB3ECDAC20A0C47B007154AB /* NibBased.swift in Sources */,

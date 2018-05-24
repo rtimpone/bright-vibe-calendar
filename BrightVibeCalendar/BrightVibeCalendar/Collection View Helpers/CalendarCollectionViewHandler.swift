@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 
 protocol CalendarCollectionViewHandlerDelegate: class {
-    func didSelectItem(_ item: Date)
+    func didSelectDate(_ date: Date)
 }
 
 class CalendarCollectionViewHandler: CollectionViewHandler {
     
     weak var delegate: CalendarCollectionViewHandlerDelegate?
-    private var selectedItem: Date!
-    var dates: [Date] = []
+    
+    var dataSource = CollectionViewDataSource(monthsBeforeAndAfterToday: 12)
     let headerDayLetters = Calendar.current.veryShortWeekdaySymbols
     var fontSizeToUseForCells = FontSizeCalculator.maximumFontSize
     var theme: Theme = Themes.standard
@@ -34,18 +34,6 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionHeadersPinToVisibleBounds = true
         }
-        
-        let calendar = Calendar.current
-        let now = Date()
-        selectedItem = now
-        
-        for i in -365...365 {
-            if let date = calendar.date(byAdding: .day, value: i, to: now) {
-                dates.append(date)
-            }
-        }
-        
-        print(dates)
         
         collectionView.backgroundColor = theme.backgroundColor
     }
@@ -74,24 +62,24 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
 
 private extension CalendarCollectionViewHandler {
     
-    func item(for indexPath: IndexPath) -> Date {
-        return dates[indexPath.row]
+    func item(for indexPath: IndexPath) -> CalendarItem {
+        return dataSource.items[indexPath.row]
     }
 }
 
 extension CalendarCollectionViewHandler: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dates.count
+        return dataSource.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let day = item(for: indexPath)
+        let thisItem = item(for: indexPath)
         let cell = dequeueReusableCell(ofType: DayCell.self, for: indexPath)
         
-        let isSelected = (day == selectedItem)
-        cell.updateForDay(day, selected: isSelected, fontSize: fontSizeToUseForCells, theme: theme)
+        let isSelected = dataSource.itemIsSelected(thisItem)
+        cell.updateForItem(thisItem, selected: isSelected, fontSize: fontSizeToUseForCells, theme: theme)
         
         return cell
     }
@@ -122,8 +110,13 @@ extension CalendarCollectionViewHandler: UICollectionViewDataSource {
 extension CalendarCollectionViewHandler: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedItem = item(for: indexPath)
-        delegate?.didSelectItem(selectedItem)
+        
+        let selectedItem = item(for: indexPath)
+        if case .date(let date) = selectedItem {
+            dataSource.selectedDate = date
+            delegate?.didSelectDate(date)
+        }
+        
         collectionView.reloadData()
     }
     
