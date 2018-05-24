@@ -29,7 +29,7 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController: CalendarCollectionViewHandlerDelegate {
     
-    func didSelectItem(_ item: Int) {
+    func didSelectItem(_ item: Date) {
         print("user selected item '\(item)'")
     }
 }

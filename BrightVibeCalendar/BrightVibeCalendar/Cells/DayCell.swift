@@ -19,11 +19,20 @@ class DayCell: UICollectionViewCell, NibBased {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var monthDayLabel: UILabel!
     
-    func updateForDay(_ day: Int, selected isSelected: Bool, fontSize: CGFloat, theme: Theme) {
+    func updateForDay(_ date: Date, selected isSelected: Bool, fontSize: CGFloat, theme: Theme) {
+        
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: date)
+        
+        let df = DateFormatter()
+        df.dateFormat = "MMM"
         
         let dayText = "\(day)"
+        let monthText = df.string(from: date).uppercased()
+        
         dayLabel.text = dayText
         monthDayLabel.text = dayText
+        monthLabel.text = monthText
         
         let shouldShowMonthLabel = day == 1
         dayLabel.isHidden = shouldShowMonthLabel

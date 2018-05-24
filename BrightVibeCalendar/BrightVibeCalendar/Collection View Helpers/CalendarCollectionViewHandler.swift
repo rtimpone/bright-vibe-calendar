@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 
 protocol CalendarCollectionViewHandlerDelegate: class {
-    func didSelectItem(_ item: Int)
+    func didSelectItem(_ item: Date)
 }
 
 class CalendarCollectionViewHandler: CollectionViewHandler {
     
     weak var delegate: CalendarCollectionViewHandlerDelegate?
-    private var selectedItem: Int = 1
-    var dates: [Int] = []
-    let headerDayLetters = ["S", "M", "T", "W", "T", "F", "S"]
+    private var selectedItem: Date!
+    var dates: [Date] = []
+    let headerDayLetters = Calendar.current.veryShortWeekdaySymbols
     var fontSizeToUseForCells = FontSizeCalculator.maximumFontSize
     var theme: Theme = Themes.standard
     
@@ -35,9 +35,17 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
             layout.sectionHeadersPinToVisibleBounds = true
         }
         
-        for i in 0...200 {
-            dates.append(i % 31 + 1)
+        let calendar = Calendar.current
+        let now = Date()
+        selectedItem = now
+        
+        for i in -365...365 {
+            if let date = calendar.date(byAdding: .day, value: i, to: now) {
+                dates.append(date)
+            }
         }
+        
+        print(dates)
         
         collectionView.backgroundColor = theme.backgroundColor
     }
@@ -66,7 +74,7 @@ class CalendarCollectionViewHandler: CollectionViewHandler {
 
 private extension CalendarCollectionViewHandler {
     
-    func item(for indexPath: IndexPath) -> Int {
+    func item(for indexPath: IndexPath) -> Date {
         return dates[indexPath.row]
     }
 }
@@ -74,7 +82,7 @@ private extension CalendarCollectionViewHandler {
 extension CalendarCollectionViewHandler: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 200
+        return dates.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
